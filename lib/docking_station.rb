@@ -9,7 +9,8 @@ class Dockingstation
     end
 
     def dock(bike) 
-        @bike = bike
+       fail 'No more space at docking station' if @bike 
+       @bike = bike
     end
 end
 
