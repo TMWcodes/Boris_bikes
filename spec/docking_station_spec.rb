@@ -36,12 +36,44 @@ describe Dockingstation do
         expect(subject.bikes).to eq [bikes]
     end
 
-    describe '#dock' do
+    # describe '#dock' do
+    #     it 'raises an error when full' do
+    #         Dockingstation::DEFAULT_CAPACITY.times do
+    #             subject.dock(Bike.new) end
+    #         expect { subject.dock Bike.new }.to raise_error 'No more space at docking station'
+    #     end
+    # end
+=begin
+     describe '#dock' do
         it 'raises an error when full' do
-            Dockingstation::DEFAULT_CAPACITY.times do
-                 subject.dock(Bike.new) end
+            subject.capacity.times {subject.dock Bike.new}
             expect { subject.dock Bike.new }.to raise_error 'No more space at docking station'
         end
     end
+
+        it 'has a default capacity' do
+            expect(subject.capacity).to eq Dockingstation::DEFAULT_CAPACITY
+        end
+
+    describe 'initialization' do
+        it 'has an variable capacity' do
+            docking_station = Dockingstation.new(50)
+            50.times {docking_station.dock Bike.new}
+            expect { subject.dock Bike.new }.to raise_error 'no more space m8'
+        end
+    end
+=end
+    describe 'initialization' do
+        subject { Dockingstation.new }
+        let(:bike) { Bike.new }
+        it 'defaults capacity' do
+            described_class::DEFAULT_CAPACITY.times do
+            subject.dock(bike)
+            end
+            expect { subject.dock(bike) }.to raise_error 'No more space at docking station'
+        end
+    end
 end
+
+        
 
