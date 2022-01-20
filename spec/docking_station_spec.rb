@@ -44,4 +44,3 @@ describe Dockingstation do
     end
 end
 
-    
